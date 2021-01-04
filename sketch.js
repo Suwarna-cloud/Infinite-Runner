@@ -61,9 +61,10 @@ function setup() {
   gameOver.scale = 0.5;
 
   //restart = createSprite(1100, 40);
-  restart = createSprite(width - 100, 50);
+  //restart = createSprite(width - 100, 50);
+  restart = createSprite(width / 2, height / 2);
   restart.addImage("restart", restartImg);
-  restart.scale = 0.15;
+  restart.scale = 0.3;
 
   //shoot = createSprite(200, 100);
   shoot = createSprite(width - 90, height / 6 + 10);
@@ -216,7 +217,7 @@ function draw() {
   if (score === 0) {
     gameState === END;
   }
-  if (mousePressedOver(restart)) {
+  if (mousePressedOver(restart) || touches.length > 0) {
     reset();
     count = 0;
     score = 5;
@@ -226,6 +227,7 @@ function draw() {
     instruct.addImage("instruct", textimg);
     instruct.lifetime = 150;
     player.changeAnimation("zombie", zombierunning);
+    touches = [];
   }
   player.collide(invisibleground);
   console.log(player.y);
