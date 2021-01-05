@@ -29,7 +29,7 @@ function preload() {
   enemyimg = loadAnimation("images/dragons.png");
   // enemyimg = loadAnimation("images/most_c.png");
   enemy_dieimg = loadAnimation("images/enemy1.png");
-  playerheadimg = loadImage("images/chances.png");
+  chanceimg = loadImage("images/chances.png");
   coinimg = loadImage("images/coins.png");
   textimg = loadImage("images/text.png");
   shootImg = loadImage("images/shoot.png");
@@ -40,7 +40,8 @@ function setup() {
   //createCanvas(1600, 600);
   createCanvas(windowWidth, windowHeight);
   //ground = createSprite(600, 390, 1200, 10);
-  ground = createSprite(width / 2, height / 2 + 70, width, 10);
+  //ground = createSprite(width / 2, height / 2 + 70, width, 10);
+  ground = createSprite(width / 2, height-300, width, 10);
   ground.addImage("ground", groundimg);
   ground.x = ground.width / 2;
   //ground.visible = false;
@@ -52,7 +53,10 @@ function setup() {
   player.scale = 0.3;
 
   //invisibleground = createSprite(600, 385, 1200, 10);
-  invisibleground = createSprite(width / 2, height / 2 + 65, width, 10);
+  //invisibleground = createSprite(width / 2, height / 2 + 65, width, 10);
+
+  invisibleground = createSprite(width / 2, height - 300, width, 10);
+  //pipes = createSprite(width / 2, height - 300, 10, 10);
   invisibleground.visible = false;
 
   //gameOver = createSprite(620, 150);
@@ -81,12 +85,12 @@ function setup() {
   coinGroup = new Group();
 
   //playerhead = createSprite(50, 50, 10, 10);
-  playerhead = createSprite(50, height / 4 - 100, 10, 10);
-  playerhead.addImage("playerhead", playerheadimg);
+  playerhead = createSprite(50, height / 6 - 100, 10, 10);
+  playerhead.addImage("playerhead", chanceimg);
   playerhead.scale = 1.0;
 
   //coin = createSprite(200, 50, 10, 10);
-  coin = createSprite(200, height / 4 - 100, 10, 10);
+  coin = createSprite(200, height / 6 - 100, 10, 10);
   coin.addImage("coin", coinimg);
   coin.scale = 0.5;
 
@@ -235,7 +239,8 @@ function draw() {
 function spawnPipes() {
   if (frameCount % 140 === 0) {
     //pipes = createSprite(1200, 325, 10, 10);
-    pipes = createSprite(width / 2, height - 300, 10, 10);
+    pipes = createSprite(width / 2, height - 360, 10, 10);
+
     //player = createSprite(100, height - 300, 10, 10);
     // pipes = createSprite(1200, 500, 10, 10);
     pipes.addImage("pipes", obstacleImg);
@@ -258,7 +263,7 @@ function spawnClouds() {
 }
 function spawnEnemies() {
   if (frameCount % 300 === 0) {
-    enemies = createSprite(width / 2, height - 300, 10, 10);
+    enemies = createSprite(width / 2, height - 320, 10, 10);
     //pipes = createSprite(width / 2, height - 300, 10, 10);
     //enemies = createSprite(1200, 330, 10, 20);
     enemies.addAnimation("enemy", enemyimg);
